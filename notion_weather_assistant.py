@@ -46,7 +46,7 @@ class NotionAssistant:
                 "content" : f"Error: {str(e)}"
             }
 
-    async def _excecute_tool_calls(self, orchestrator: MCPOrchestrator, tool_calls: List[Any]) -> List[Dict[str, Any]]:
+    async def _execute_tool_calls(self, orchestrator: MCPOrchestrator, tool_calls: List[Any]) -> List[Dict[str, Any]]:
         """ Excecute multiple tool calls in parallel and returns results."""
         tasks=[]
         for tc in tool_calls:
@@ -145,7 +145,7 @@ class NotionAssistant:
                                 tool_choice="auto"
                             )
 
-                            follow_up_message = follow_up_response.choice[0].message
+                            follow_up_message = follow_up_response.choices[0].message
 
                             if follow_up_message.tool_calls:
 
